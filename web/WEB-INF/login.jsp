@@ -11,10 +11,11 @@
         <form action="login" method="post">
             email: <input type="text" name="email" value="${email}"><br>
             password: <input type="password" name="password"><br>
-            <input type="submit" value="Sign in"><br><br>
+            <input type="submit" value="Sign in">
             
             
         </form>
+            <br><br>
             <a href="forgot">Forgot Password!</a>
             <!--<a  href="login?forgot">Forgot Password!</a>-->
     </body>
