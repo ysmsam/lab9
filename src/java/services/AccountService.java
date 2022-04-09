@@ -55,14 +55,14 @@ public class AccountService {
                 String body = "Your password is reset to password";
                 
 //                GmailService.sendMail(to, subject, template, tags);
-                GmailService.sendMail(to, subject, body, true);
+                GmailService.sendMail(to, subject, body, false);
                 return true;
             } else {
                 return false;
             }
         } catch (Exception e) {
         }
-        
+       
         return false;
     }
 }

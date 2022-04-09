@@ -15,7 +15,7 @@
         
     </head>
     <body>
-        <form action="login" method="post">
+        <form action="forgot" method="post">
             Email Address: <input type="text" name="email" value="${email}"><br>
             
             <input type="submit" value="Submit">

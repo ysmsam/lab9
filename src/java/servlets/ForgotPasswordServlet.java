@@ -35,7 +35,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 //        String email = CookieUtil.getCookieValue(cookies, "email");
 //        request.setAttribute("email", email);
 //        
-//        getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/forgot.jsp").forward(request, response);
     }
 
     @Override
@@ -47,41 +47,16 @@ public class ForgotPasswordServlet extends HttpServlet {
         String path = getServletContext().getRealPath("/WEB-INF");
         User user = new User(email);
         
-        if(as.forgotPassword(email, path)){
+        Boolean checkUserEmail = as.forgotPassword(email, path);
+        
+        if(checkUserEmail){
             request.setAttribute("alert", "Email sent");
-//            GmailService gs = new GmailService();
-//            try {
-//                gs.sendMail(email, "Password Reset", "Your password is reset to passord", false);
-//            } catch (MessagingException ex) {
-//                Logger.getLogger(ForgotPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (NamingException ex) {
-//                Logger.getLogger(ForgotPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
-//            }
         }else{
             request.setAttribute("alert", "If the address you entered is valid, you will receive an email very soon. Please check your email for your password.");
         }
         
-        // save email to a cookie
-//        Cookie cookie = new Cookie("email", email);
-//        cookie.setMaxAge(60 * 60 * 24 * 365 * 3);
-//        response.addCookie(cookie);
-//        
-//        String path = getServletContext().getRealPath("/WEB-INF");
-//        
-//        if (user == null) {
-//            request.setAttribute("email", email);
-//            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-//            return;
-//        }
-//        
-//        HttpSession session = request.getSession();
-//        session.setAttribute("email", email);
-//        
-//        if (user.getRole().getRoleId() == 1) {
-//            response.sendRedirect("admin");
-//        } else {
-//            response.sendRedirect("notes");
-//        }
+
+    getServletContext().getRequestDispatcher("/WEB-INF/forgot.jsp").forward(request, response);
     }
 
 }
