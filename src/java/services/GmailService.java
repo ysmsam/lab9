@@ -47,21 +47,15 @@ public static void sendMail(String to, String subject, String body, boolean body
         final String username = (String) env.lookup("webmail-username");
         final String password = (String) env.lookup("webmail-password");
         Properties props = new Properties();
-        
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-       
-        Session session = Session.getInstance(props,
-            new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username, password);
-                }
-            }
-        );
+         
+        props.put("mail.transport.protocol", "smtps");
+        props.put("mail.smtps.host", "smtp.gmail.com");
+        props.put("mail.smtps.port", 465);
+        props.put("mail.smtps.auth", "true");
+        props.put("mail.smtps.quitwait", "false");
+        Session session = Session.getDefaultInstance(props);
         session.setDebug(true);
+       
         // create a message
         Message message = new MimeMessage(session);
         message.setSubject(subject);
@@ -70,11 +64,13 @@ public static void sendMail(String to, String subject, String body, boolean body
         } else {
             message.setText(body);
         }
+
         // address the message
         Address fromAddress = new InternetAddress(username);
         Address toAddress = new InternetAddress(to);
         message.setFrom(fromAddress);
         message.setRecipient(Message.RecipientType.TO, toAddress);
+
         // send the message
         Transport transport = session.getTransport();
         transport.connect(username, password);

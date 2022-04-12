@@ -44,11 +44,11 @@ public class ForgotPasswordServlet extends HttpServlet {
         String email = request.getParameter("email");
         
         AccountService as = new AccountService();
-//        String path = getServletContext().getRealPath("/WEB-INF");
+        String path = getServletContext().getRealPath("/WEB-INF");
         User user = new User(email);
         
-//        Boolean checkUserEmail = as.forgotPassword(email, path);
-        Boolean checkUserEmail = as.forgotPassword(email);
+        Boolean checkUserEmail = as.forgotPassword(email, path);
+//        Boolean checkUserEmail = as.forgotPassword(email);
         
         if(checkUserEmail){
             request.setAttribute("alert", "Email sent");
