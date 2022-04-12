@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/src/java/services/GmailService.java</file>
+            <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/src/java/filters/AdminFilter.java</file>
+            <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/src/java/services/AccountService.java</file>
             <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/src/java/servlets/ForgotPasswordServlet.java</file>
             <file>file:/C:/Users/ysmsa/Desktop/CPRG352/lab9/web/META-INF/context.xml</file>
